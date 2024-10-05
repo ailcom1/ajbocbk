@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> <!-- تعطيل التكبير/التصغير -->
+    <title>نموذج التسجيل</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+        }
+
+        .heading {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00ffaa;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-bottom: 2px solid #00ffaa;
+            background-color: #444;
+        }
+
+        label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            font-size: 16px;
+            color: #aaa;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+
+        .form-input:focus + label,
+        .form-input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            color: #00ffaa;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00ffaa, #009f7a);
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(135deg, #009f7a, #00ffaa);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.5);
+        }
+
+        /* تكيف النموذج مع شاشات أصغر */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            .heading {
+                font-size: 22px;
+            }
+
+            .form-input {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .submit-button {
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="form-container">
+        <form class="form" id="registration-form">
+            <span class="heading">نموذج التسجيل</span>
+
+            <div class="form-group">
+                <input class="form-input" required="" type="email" placeholder=" " id="email" />
+                <label>Email</label>
+            </div>
+
+            <div class="form-group">
+                <input class="form-input" required="" type="password" placeholder=" " id="password" />
+                <label>Password</label>
+            </div>
+
+            <button type="submit" class="submit-button">SUBMIT</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // التحقق مما إذا كان المستخدم قد سجل الدخول بالفعل
+            if (localStorage.getItem('loggedIn') === 'true') {
+                window.location.href = 'https://ailcom1.github.io/ailkafub/';
+            }
+        });
+
+        const form = document.getElementById('registration-form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // منع الإرسال الافتراضي للنموذج
+
+            // يمكنك هنا إضافة أي تحقق آخر للمعلومات المدخلة إذا لزم الأمر
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // هنا يمكنك حفظ المعلومات المدخلة في localStorage
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
+            // الانتقال إلى الرابط المحدد
+            window.location.href = 'https://ailcom1.github.io/ailkafub/';
+        });
+    </script>
+</body>
+</html>
